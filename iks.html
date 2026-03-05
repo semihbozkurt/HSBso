@@ -41,6 +41,7 @@
             flex: 1;
             background-size: cover;
             background-position: center;
+            cursor: zoom-in;
         }
 
 /* Resim Yolları - Kendi resim isimlerini buraya yaz */
@@ -52,6 +53,39 @@
         .text-side p { line-height: 1.6; color: #ccc; }
 
         a { color: #3498db; text-decoration: none; margin-top: 20px; }
+
+                /* Başlangıçta gizli olan katman */
+        .lightbox {
+            display: none; /* Başta görünmez */
+            position: fixed;
+            z-index: 2000; /* Her şeyin üstünde dursun */
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Arka planı karart */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Büyüyen Resim */
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Çarpı Butonu */
+        .close-btn {
+            position: absolute;
+            top: 30px; right: 40px;
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+        }
+
+        /* Tıklanabilir küçük resimler için imleç */
+        
+
     </style>
 </head>
 <body>
@@ -87,6 +121,40 @@
             </div>
         </div>
     </div>
+        <!-- Büyütülen resmin görüneceği gizli katman -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" id="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="" alt="Büyük Resim">
+    </div>
+
+    <script>
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('close-lightbox');
+
+        // Tüm resim kutularını seçelim
+        document.querySelectorAll('.image-side').forEach(box => {
+            box.addEventListener('click', function() {
+                // Kutunun arka planındaki resim URL'sini alalım
+                const style = window.getComputedStyle(this);
+                const imageUrl = style.backgroundImage.slice(5, -2); // url("...") kısmını temizler
+
+                lightboxImg.src = imageUrl; // Büyük resme bu adresi ver
+                lightbox.style.display = 'flex'; // Katmanı görünür yap
+            });
+        });
+
+        // Çarpıya veya boşluğa tıklayınca kapat
+        lightbox.addEventListener('click', (e) => {
+            // Eğer tıklanan şey resmin kendisi değilse kapat
+            if (e.target !== lightboxImg) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+
+    </script>
 
     
 </body>
