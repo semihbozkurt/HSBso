@@ -16,7 +16,10 @@
             justify-content: center;
             align-items: center;
             border-bottom: 2px solid rgba(24, 131, 40, 0.1);
-    }
+}
+            .section:first-of-type {
+                margin-top: 60px; /* Header kadar boşluk bırakır */
+            }
 
             .header-footer {
                 min-height: 60px;
@@ -125,7 +128,7 @@
     </head>
     <body>
     <!-- Üst Yazı -->
-        <header class="section header-footer">
+        <header class="header-footer">
             <div class="logo">Logon</div>
     
     <!-- Hamburger Simgesi -->
@@ -138,9 +141,9 @@
             <!-- Menü Linkleri -->
             <nav class="nav-menu" id="nav-menu">
                 <a href="index.html">Ana Sayfa</a>
-                <a href="sayfa1.html">Projeler</a>
-                <a href="#">Hakkımda</a>
-                <a href="#">İletişim</a>
+                <a href="iks.html">İksirler</a>
+                <a href="büy.html">Büyüler</a>
+                
             </nav>
         </header>
 
@@ -165,7 +168,7 @@
     <div class="section dark">Bölüm 5</div>
 
     <!-- Alt Yazı -->
-    <footer class="section header-footer">Alt Yazı / İletişim</footer>
+    <footer class="header-footer">Alt Yazı / İletişim</footer>
 
         <script>
             const hamburger = document.getElementById('hamburger');
