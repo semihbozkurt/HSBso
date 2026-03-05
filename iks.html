@@ -4,13 +4,75 @@
     <meta charset="UTF-8">
     <title>İkinci Sayfa</title>
     <style>
-        body { background: #121212; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        body { 
+            background: #121212; 
+            color: white; 
+            font-family: sans-serif; 
+            margin: 0; 
+            padding: 50px 0; 
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto; /* Sayfayı ortalar */
+            display: flex;
+            flex-direction: column;
+            gap: 50px; /* Satırlar arası boşluk */
+        }
+
+        .row {
+            display: flex;
+            width: 100%;
+            min-height: 300px;
+            border-radius: 20px;
+            overflow: hidden; /* Köşelerin yuvarlak kalmasını sağlar */
+            background: #1e1e1e;
+        }
+
+        .content-box {
+            flex: 1; /* İki div'in de yan yana eşit genişlikte (yarı yarıya) durmasını sağlar */
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .image-side {
+            background-size: cover;
+            background-position: center;
+        }
+
+/* Resim Yolları - Kendi resim isimlerini buraya yaz */
+        .bg-resim1 { background-image: url('resim1.png'); }
+        .bg-resim2 { background-image: url('resim2.jpg'); }
+
+        .text-side h2 { color: #3498db; margin-top: 0; }
+        .text-side p { line-height: 1.6; color: #ccc; }
+
         a { color: #3498db; text-decoration: none; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <h1>Tebrikler! İkinci Sayfaya Geldin.</h1>
-    <p>Burası senin yeni tasarım alanın.</p>
+    <div class="container">
+    <!-- Birinci Satır -->
+        <div class="row">
+            <div class="content-box image-side bg-resim1"></div>
+            <div class="content-box text-side">
+                <h2>Birinci Başlık</h2>
+                <p>Buraya resimle ilgili açıklama metnin gelecek. İstediğin kadar uzun yazabilirsin.</p>
+            </div>
+        </div>
+
+    <!-- İkinci Satır -->
+        <div class="row">
+            <div class="content-box text-side">
+                <h2>İkinci Başlık</h2>
+                <p>Bu satırda yazı solda, resim sağda olacak şekilde yerleştirdik (daha estetik durur).</p>
+            </div>
+            <div class="content-box image-side bg-resim2"></div>
+        </div>
+    </div>
+
     <a href="index.html">← Ana Sayfaya Dön</a>
 </body>
 </html>
