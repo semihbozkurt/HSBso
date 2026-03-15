@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemilerin Hikayesi</title>
+    <style>
+        body {
+            background-color: rgb(9, 9, 9);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 60px 0;
+            font-family: sans-serif;
+            min-height: 100vh;
+        }
+
+        .box {
+            background-color: #000000;
+            padding: 40px;            
+            margin: 20px;             
+            border-radius: 50px;      
+            max-width: 600px;         
+            width: 80%;               
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); 
+            border: 1px solid #333;   
+            height: fit-content;
+            text-align: center; /* İçeriği ortalar */
+        }
+
+        /* Sarı Başlık */
+        h2 {
+            color: #d7bb1d; /* Altın Sarısı */
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* Bilmece ve Input Alanı */
+        #riddle-section {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #FFD700;
+            background: transparent;
+            color: white;
+            margin-top: 15px;
+            outline: none;
+            width: 60%;
+        }
+
+        /* Gizli Metin (Başlangıçta kapalı) */
+        #secret-content1 {
+            display: none; 
+            color: rgb(14, 153, 32);
+            text-align: left; /* Okunabilirlik için sola yaslı */
+            line-height: 1.6;
+        }
+
+        #secret-content2 {
+            display: none; 
+            color: rgb(14, 153, 32);
+            text-align: left; /* Okunabilirlik için sola yaslı */
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2 id="main-title">Bilmece</h2>
+        
+        <div id="riddle-section">
+            <p>Ben varken beni göremezsin, ama ben yoksam hiçbir şeyi göremezsin. Ben neyim? <br><span style="font-size: 10px;">(cevabı türkçe veya ingilizce yazmayı deneyin)</span></p>
+            <input type="text" id="answer-input" placeholder="Bil bakalım" oninput="checkAnswer()">
+        </div>
+
+        <div id="secret-content1">
+            <hr style="border: 0.5px solid #333; margin: 20px 0;">
+            <p>
+
+            </p>
+        </div>
+
+<!-- Demek kodu inceliyorsun?  eğer istersen sana küçük bir görevim var. 
+ 1) bunun çalışması için önce bilmeceyi cevaplamış olman lazım
+ 2) aşağıda bir <div> göreceksin. yanında id="secret-content2" yazıyor
+ 3) o yazının yanına hemen " işaretiyle > işaretinin arasına şunu yaz:
+    style="display: block;"
+ 4) bunu yaptıktan sonra yukarıdaki benzer <div> etiketindeki style="display: block;" yazısını style="display: none;" olarak değiştir
+
+    kolay gelsin:) -->
+        
+        <div id="secret-content2">
+            <hr style="border: 0.5px solid #333; margin: 20px 0;">
+            <p>
+                Bravo! görevi tamamladın -veya tamamlamadan bu yazıyı kod bölümünden okuyorsun- <br>
+                burada sana küçük bir hediye var - görevi tamamlasan da tamamlamasan da- <br>
+                bu linkten birbirinden farklı birsürü düğümü nasıl atacağını öğrene bilirsin:  <a href="https://www.animatedknots.com/" target="_blank" >İşte Link</a> 
+
+            </p>
+        
+
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+    const rawInput = document.getElementById('answer-input').value;
+    
+    // Farklı dillerdeki "ışık" karşılıkları
+    const validAnswers = [
+        'ışık', 'isik', 'light', 'luz', 'lumière', 'licht', 'luce', 'svet', 'lys'
+    ];
+
+    // Girdiyi hem Türkçe hem genel küçük harfe çevirip kontrol ediyoruz
+    const inputTR = rawInput.toLocaleLowerCase('tr-TR');
+    const inputEN = rawInput.toLowerCase();
+
+    const secretContent = document.getElementById('secret-content1');
+    const riddleSection = document.getElementById('riddle-section');
+
+    // Eğer yazdığın kelime listede VARSA (includes) çalışır
+    if (validAnswers.includes(inputTR) || validAnswers.includes(inputEN)) {
+        secretContent.style.display = 'block';
+        riddleSection.style.display = 'none';
+        document.getElementById('main-title').innerText = "Element Gemilerinin Hikayesi";
+    }
+}
+
+    </script>
+
+</body>
+</html>
