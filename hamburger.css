@@ -1,19 +1,32 @@
-            body{
-                overflow-x: hidden;
-            }
-            
+             * {
+                   margin: 0;
+                   padding: 0;
+                   box-sizing: border-box;
+}
+
+
+             body { margin: 0; font-family: sans-serif; background: #121212; color: white;
+                overflow-x: hidden; /* Sağa doğru kaymayı (scroll) tamamen kapatır */
+             }
+           
             .header-footer {
                 min-height: 60px;
                 height: 60px;
                 display: flex;
-                top: 0;
-                left: 0;
                 width: 100%;
                 box-sizing: border-box;
                 align-items: center;
                 justify-content: space-between;
                 padding: 5px 50px;
                 z-index: 1000;
+                position: relative;
+                background-color: black;
+            }
+            .header-footer .logo {
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+                line-height: 1;
             }
             .hamburger {
                 display: flex;
