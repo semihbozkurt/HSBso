@@ -62,11 +62,11 @@
             .nav-menu {
                 position: absolute;
                 top: 60px;
-                right: -100%; /* Ekranın sağında gizli */
+                right: 0;
                 background: rgba(26, 26, 26, 0.95);
                 width: 200px;
                 height: auto;
-                display: flex;
+                display: none;
                 flex-direction: column;
                 padding: 20px;
                 transition: 0.5s;
@@ -76,7 +76,7 @@
 
             /* Menü Açıldığında (JS ile bu sınıfı ekleyeceğiz) */
             .nav-menu.active {
-                right: 0;
+                display: flex;
             }
 
             .nav-menu a {
