@@ -1,0 +1,58 @@
+            .header-footer {
+                min-height: 60px;
+                height: 60px;
+                display: flex;
+                top: 0;
+                width: 100%;
+                box-sizing: border-box;
+                justify-content: space-between;
+                padding: 5px 50px;
+                position: flex;
+                z-index: 1000;
+            }
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                z-index: 101;
+            }
+            .hamburger span {
+                width: 30px;
+                height: 3px;
+                background-color: white;
+                transition: 0.3s;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 60px;
+                right: -100%; /* Ekranın sağında gizli */
+                background: rgba(26, 26, 26, 0.95);
+                width: 200px;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                transition: 0.5s;
+                border-radius: 0 0 0 20px;
+                box-shadow: -5px 5px 15px rgba(0,0,0,0.5);
+            }
+            .nav-menu.active {
+                right: 0;
+            }
+            .nav-menu a {
+                color: white;
+                text-decoration: none;
+                padding: 15px;
+                border-bottom: 1px solid #333;
+                transition: 0.3s;
+            }
+            .nav-menu a:hover {
+                color: #3498db;
+                padding-left: 25px;
+            }
+            /* Hamburger X Şekline Dönüşsün */
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
