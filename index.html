@@ -107,7 +107,7 @@
     /* Özel Buton Tasarımı */
             .custom-button {
                 width: 300px; /* Yatay genişlik */
-                height: 400px; /* Dikey uzunluk (yatayın 2 katı) */
+                height: 400px; /* Dikey uzunluk */
                 border-radius: 30px; /* Yuvarlak köşeler */
                 cursor: pointer;
                 background-size: cover;
@@ -120,6 +120,27 @@
                 border: 3px solid transparent;
     }
 
+            .kapaklık-button {
+                width: 350px; /* Yatay genişlik */
+                height: 500px; /* Dikey uzunluk */
+                border-radius: 30px; /* Yuvarlak köşeler */
+                cursor: pointer;
+                background-size: cover;
+                background-position: center;
+                transition: all 0.4s ease; /* Hover geçişi yumuşaklığı */
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                padding-bottom: 20px;
+                border: 3px solid transparent;
+    }
+            .kapaklık-button:hover {
+                transform: scale(1.05) translateY(-10px); /* Büyüme ve hafif yukarı kalkma */
+                box-shadow: 0 20px 40px rgba(0,0,0,0.6); /* Gölge efekti */
+                border-color: #3498db; /* Kenarlık parlaması */
+}
+
+
             /* Resim Yolları (Buraya kendi resim linklerini koyabilirsin) */
             .btn-1 { background-image: url('büy-şap.png'); }
             .btn-2 { background-image: url('ik-şi.png'); }
@@ -130,7 +151,13 @@
                 box-shadow: 0 20px 40px rgba(0,0,0,0.6); /* Gölge efekti */
                 border-color: #3498db; /* Kenarlık parlaması */
 }
+            @media (max-width: 915px){
+                #kapaklık{
+                    flex-direction: column;
+                    gap: 20px;
+                }
 
+            }
 
         </style>
     </head>
@@ -163,7 +190,17 @@
 
 
     <div class="section gray">Harita</div>
-    <div class="section dark">Kitaplar</div>
+    <div class="section dark" style="min-height: 70vh; padding: 10px; display: flex; justify-content: space-evenly;" id="kapaklık">
+        <div>
+            <button class="kapaklık-button" style="flex:1; background-image: url('SOkap.png'); border-radius: 0; "></button>
+        </div>
+        <div>
+            <button class="kapaklık-button" style="flex:1; background-image: url('SOkap.png'); border-radius: 0; "></button>
+        </div>
+        <div>
+            <button class="kapaklık-button" style="flex:1; background-image: url('SOkap.png'); border-radius: 0; "></button>
+        </div>
+    </div>
 
 
 <!-- 3. Bölüm: Senin İstediğin Butonlar -->
