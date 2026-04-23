@@ -1,0 +1,70 @@
+/* The box that clips the map to the screen */
+#map-viewport {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #1a1a1a; /* Dark background behind the parchment */
+}
+
+/* The actual map container that we will zoom and drag */
+#map-container {
+    position: absolute;
+    cursor: grab;
+    transform-origin: 0 0;
+}
+
+.map-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Make the SVG borders invisible but clickable */
+#svg1 path {
+    fill: rgba(255, 255, 255, 0); /* Completely transparent */
+    stroke: none; /* No visible lines */
+    pointer-events: all; /* Still detects mouse clicks/hover! */
+    transition: fill 0.6s ease;
+}
+
+/* Only countries with the 'golden' class will glow */
+#svg1 path.golden:hover {
+    fill: url(#gold-gradient) !important; /* We will define this gradient in the next step */
+    opacity: 1;
+    cursor: default; /* As you requested: no pointer for mystery */
+}
+
+/* UI Panel on the right */
+#info-panel {
+    position: fixed;
+    right: -33%; /* Hidden by default */
+    top: 0;
+    width: 33%;
+    height: 100%;
+    background: #f4e4bc; /* Parchment-like color */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    transition: right 0.5s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    scrollbar-width: thin; /* For Firefox */
+}
+
+#info-panel.open {
+    right: 0;
+}
+
+/* Hide scrollbar for Chrome/Safari but keep functionality */
+#info-panel::-webkit-scrollbar {
+    width: 8px;
+}
+#info-panel::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0); /* Invisible */
+}
+#info-panel:hover::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2); /* Shows on hover */
+}
+
