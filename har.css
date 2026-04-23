@@ -9,9 +9,12 @@
 
 /* The actual map container that we will zoom and drag */
 #map-container {
-    position: absolute;
     cursor: grab;
     transform-origin: 0 0;
+    position: relative; /* This is the boss. Layers stay inside this. */
+    width: 1123px;      /* Use your exact Inkscape width */
+    height: 794px;     /* Use your exact Inkscape height */
+    margin: 0 auto;    /* Centers it on the screen */
 }
 
 .map-layer {
@@ -19,8 +22,22 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+}
+
+#parsomen-img {
+    z-index: 1; /* Bottom layer */
+}
+
+#taslak-img {
+    z-index: 2; /* Middle layer */
+    opacity: 0.4; /* So you can see the parchment through it */
+    mix-blend-mode: multiply; /* Blends it like ink into the paper */
+}
+
+#svg1 {
+    z-index: 3; /* Top layer (The one you click on) */
+    pointer-events: none; /* Allows clicks to pass through the empty space of the SVG */
 }
 
 /* Make the SVG borders invisible but clickable */
