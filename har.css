@@ -31,7 +31,7 @@
 
 #taslak-img {
     z-index: 2; /* Middle layer */
-    opacity: 0.4; /* So you can see the parchment through it */
+    opacity: 0.9; /* So you can see the parchment through it */
     mix-blend-mode: multiply; /* Blends it like ink into the paper */
 }
 
