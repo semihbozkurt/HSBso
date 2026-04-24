@@ -5,6 +5,7 @@
     overflow: hidden;
     position: relative;
     background-color: #1a1a1a; /* Dark background behind the parchment */
+    margin: 0px;
 }
 
 /* The actual map container that we will zoom and drag */
