@@ -4,44 +4,46 @@
  
  
  
- const mapElement = document.getElementById('map-container');
-    
-    // Initialize Panzoom
-    const pz = Panzoom(mapElement, {
-        maxScale: 5,
-        minScale: 1,
-        step: 0.3,
-        contain: 'outside' // Keeps the map from flying off-screen
-    });
+const mapElement = document.getElementById('map-container');
+const viewport = document.getElementById('map-viewport');
 
-    // Enable zooming with the mouse wheel
-    mapElement.parentElement.addEventListener('wheel', (event) => {
-    // Sayfanın komple büyümesini engelle
-        event.preventDefault();
-        panzoom.zoomWithWheel(event);
+// Initialize Panzoom - Değişken adını 'pz' olarak kilitliyoruz
+const pz = Panzoom(mapElement, {
+    maxScale: 5,
+    minScale: 1,
+    step: 0.3,
+    contain: 'outside'
+});
+
+// Zoom özelliğini viewport üzerinden bağlayalım
+viewport.addEventListener('wheel', (event) => {
+    event.preventDefault(); // Sayfanın komple büyümesini engeller
+    pz.zoomWithWheel(event); // Burada 'pz' kullanmalısın
+}, { passive: false });
+
+// Tıklama olayları
+const regions = document.querySelectorAll('#svg1 path');
+const panel = document.getElementById('info-panel');
+
+regions.forEach(region => {
+    region.addEventListener('click', (e) => {
+        console.log("Clicked on:", region.id);
         
-    }, {passive: false});
-
-    // Click event for the countries
-    const regions = document.querySelectorAll('#svg1 path');
-    regions.forEach(region => {
-        region.addEventListener('click', (e) => {
-            console.log("Clicked on:", region.id);
-            
-            // Logic to open the right-side panel
-            const panel = document.getElementById('info-panel');
-            panel.classList.add('open'); // We'll set 'open' to 'right: 0' in CSS
-            
-            // Optional: Zoom into the clicked region
-            pz.zoomToPoint(2, { clientX: e.clientX, clientY: e.clientY });
-        });
+        // Paneli aç (CSS'de .open veya .visible sınıflarına göre ayarla)
+        panel.classList.add('open'); 
+        panel.classList.add('visible'); 
+        panel.style.display = "block"; // Eğer display:none kaldıysa zorla açar
+        
+        // Tıklanan yere odaklanma (Zoom)
+        pz.zoom(2.5, { animate: true, focal: e });
     });
+});
 
-    mapElement.addEventListener('mousedown', (e) => {
-    // Sürükleme başladığında imleci 'grabbing' yapalım
+// Mouse imleci değiştirme
+mapElement.addEventListener('mousedown', () => {
     mapElement.style.cursor = 'grabbing';
 });
 
-    window.addEventListener('mouseup', () => {
+window.addEventListener('mouseup', () => {
     mapElement.style.cursor = 'grab';
 });
