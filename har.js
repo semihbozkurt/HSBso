@@ -4,11 +4,18 @@
     const pz = Panzoom(mapElement, {
         maxScale: 5,
         minScale: 1,
+        step: 0.3,
         contain: 'outside' // Keeps the map from flying off-screen
     });
 
     // Enable zooming with the mouse wheel
-    mapElement.parentElement.addEventListener('wheel', pz.zoomWithWheel);
+    mapElement.parentElement.addEventListener('wheel', (event) => {
+    // Sayfanın komple büyümesini engelle
+        if (event.ctrlKey) {
+            event.preventDefault();
+        }
+        panzoom.zoomWithWheel(event);
+    });
 
     // Click event for the countries
     const regions = document.querySelectorAll('#svg1 path');
@@ -24,3 +31,12 @@
             pz.zoomToPoint(2, { clientX: e.clientX, clientY: e.clientY });
         });
     });
+
+    mapElement.addEventListener('mousedown', (e) => {
+    // Sürükleme başladığında imleci 'grabbing' yapalım
+    mapElement.style.cursor = 'grabbing';
+});
+
+    window.addEventListener('mouseup', () => {
+    mapElement.style.cursor = 'grab';
+});
