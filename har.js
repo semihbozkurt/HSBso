@@ -11,11 +11,10 @@
     // Enable zooming with the mouse wheel
     mapElement.parentElement.addEventListener('wheel', (event) => {
     // Sayfanın komple büyümesini engelle
-        if (event.ctrlKey) {
-            event.preventDefault();
-        }
+        event.preventDefault();
         panzoom.zoomWithWheel(event);
-    });
+        
+    }, {passive: false});
 
     // Click event for the countries
     const regions = document.querySelectorAll('#svg1 path');
