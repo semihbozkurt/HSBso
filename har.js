@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pz = PanzoomLib(mapElement, {
         maxScale: 5,
-        minScale: 0.1,
+        minScale: 0.01,
         step: 0.3,
         contain: 'outside',
         canvas: true // SVG ve Resim katmanları için daha kararlı çalışır
