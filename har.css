@@ -85,6 +85,8 @@
     cursor:default;
     overflow-y: auto;
     pointer-events: auto;
+    font-family: "Georgia", serif;
+    color: #3e2f1c;
 }
 
 #info-panel.open {
