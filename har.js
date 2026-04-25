@@ -36,13 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const regions = document.querySelectorAll('#svg1 path');
     const panel = document.getElementById('info-panel');
     var inf= document.getElementById('infbox')
-
+   
+    panel.addEventListener("mousedown", (e) => {e.stopPropagation()})
+    panel.addEventListener("pointerdown", (e) => {e.stopPropagation()})
     regions.forEach(region => {
         region.addEventListener('click', (e) => {
             console.log("Tıklandı:", region.id);
             panel.classList.add('open');
             if (region.id==='kaplumada'){
-                inf.innerHTML= "<h1>Kaplumbağa Adası</h1> <p>Kaplumbağa adası aslında dünya üzerinde sürekli yüzen dev bir kaplumbağadır.</p>"};
+                inf.innerHTML= "<h3>Kaplumbağa Adası</h3> <p>Kaplumbağa adası aslında dünya üzerinde sürekli yüzen dev bir kaplumbağadır. aaa aaa aaa aaa aaa aa aa aaa aa a a a aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aa aa a aa aaa aaa aaa aaa a aaa aaaa aaaa aaaa aaa aaaa aaa aaa aaaa aaa aaa aaa aaa aaa aa  a a aaa  aaa aaa aa a aadkfja ş  kd kdjslaş d kdjl </p>"};
             if (region.id==='Kraken'){
                 inf.innerHTML= "<h1>Kraken</h1> <p>Bu bölgelerde gezen dev bir ahtapot. kimisi orada kraken ve leviathan adında iki farklı ahtapot olduğunu söylüyor. ama dokunaçları sayacak kadar uzun duran kimse hayatta kalamadı.</p>"};
 

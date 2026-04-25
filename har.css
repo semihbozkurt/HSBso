@@ -18,6 +18,10 @@
     line-height: 0; /* Resimlerin altındaki 3-4 piksellik hayalet boşluğu siler */
 }
 
+#map-container:active{
+    cursor:grabbing;
+}
+
 .map-layer {
     position: absolute !important;
     top: 0 !important;
@@ -45,10 +49,10 @@
 
 /* Make the SVG borders invisible but clickable */
 #svg1 path {
-    fill: rgba(255, 255, 255, 0); /* Completely transparent */
-    stroke: none; /* No visible lines */
-    pointer-events: all; /* Still detects mouse clicks/hover! */
-    transition: fill 0.6s ease;
+    fill: rgba(255, 255, 255, 0) !important; /* Completely transparent */
+    stroke: none !important; /* No visible lines */
+    pointer-events: all !important; /* Still detects mouse clicks/hover! */
+    transition: fill 0.6s ease !important;
 }
 
 /* Only countries with the 'golden' class will glow */
@@ -58,8 +62,16 @@
     cursor: default; /* As you requested: no pointer for mystery */
 }
 
+#close-panel {
+    background-color: #1a1a1a00;
+    border: #1a1a1a00;
+    cursor: pointer;
+}
+
 /* UI Panel on the right */
 #info-panel {
+    box-sizing: border-box;
+    padding: 4px;
     position: absolute;
     right: -33%; /* Hidden by default */
     top: 0;
@@ -69,22 +81,38 @@
     box-shadow: -5px 0 15px rgba(0,0,0,0.5);
     transition: right 0.5s ease;
     z-index: 1000;
+    user-select: text;
+    cursor:default;
     overflow-y: auto;
-    scrollbar-width: thin; /* For Firefox */
+    pointer-events: auto;
 }
 
 #info-panel.open {
-    right: 0;
+    right: 16.9px;
 }
 
 /* Hide scrollbar for Chrome/Safari but keep functionality */
+/* Genel scrollbar (Chrome, Edge, Safari) */
 #info-panel::-webkit-scrollbar {
-    width: 8px;
-}
-#info-panel::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0); /* Invisible */
-}
-#info-panel:hover::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.2); /* Shows on hover */
+  width: 8px;
 }
 
+/* Arka kanal (track) */
+#info-panel::-webkit-scrollbar-track {
+  background: #e8d8a8; /* parşömen rengi */
+}
+
+/* Scrollbar'ın kendisi */
+#info-panel::-webkit-scrollbar-thumb{
+  background:#7a5c3a00;
+}
+
+#info-panel::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #a3835b,
+    #7a5c3a
+  );
+  border-radius: 6px;
+  border: 2px solid #e8d8a8;
+}
