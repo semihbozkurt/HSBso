@@ -1,10 +1,10 @@
-document.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // 1. Elementleri seç
-    const mapElement = document.getElementById('map-container');
+    const mapElement = document.getElementById('map-content');
 
     // 2. Kontrol Et: Element gerçekten var mı?
     if (!mapElement) {
-        console.error("HATA: 'map-container' ID'li element bulunamadı!");
+        console.error("HATA: 'map-content' ID'li element bulunamadı!");
         return;
     }
 
@@ -25,7 +25,7 @@ document.addEventListener('load', () => {
     });
 
     // 4. Mouse Wheel Zoom
-    mapElement.addEventListener('wheel', (event) => {
+    mapElement.parentElement.addEventListener('wheel', (event) => {
         if (event.ctrlKey || event.metaKey) {
             event.preventDefault();
         }
