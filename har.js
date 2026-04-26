@@ -21,8 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
         minScale: 0.01,
         step: 0.3,
         contain: 'outside',
-        canvas: true // SVG ve Resim katmanları için daha kararlı çalışır
+        canvas: true, // SVG ve Resim katmanları için daha kararlı çalışır
+        startX: 0, // Haritanın başlangıç X pozisyonu
+        startY: 0, // Haritanın başlangıç Y pozisyonu
+        startScale: 1, // Başlangıç büyüklüğü
     });
+
+    setTimeout(() => {// Haritayı merkeze yerleştir
+    pz.pan(0, 0); 
+    }, 10);
 
     // 4. Mouse Wheel Zoom
     mapElement.parentElement.addEventListener('wheel', (event) => {
