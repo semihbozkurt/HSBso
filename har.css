@@ -65,15 +65,35 @@
     fill: rgba(255, 255, 255, 0) !important; /* Completely transparent */
     stroke: none !important; /* No visible lines */
     pointer-events: all !important; /* Still detects mouse clicks/hover! */
-    transition: fill 0.6s ease !important;
+    transition: fill 0.1s ease, fill-opacity 0.1s ease, mask-position 0.1s ease, -webkit-mask-position 0.1s ease;
+}
+#svg1 path.golden {
+    fill: url(#gold-gradient) !important;
+    fill-opacity: 0;
+    
+    /* Maskeyi 2 kat geniş yapıyoruz */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 50%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 50%);
+    
+    -webkit-mask-size: 200% 100%;
+    mask-size: 200% 100%;
+    
+    /* Başlangıçta maskenin şeffaf olan sağ yarısı ülkenin üstünde */
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+    
+    /* Animasyon hızını buradan ayarla (0.8s = 0.8 saniye) */
+    transition: mask-position 0.8s ease, -webkit-mask-position 0.8s ease, fill-opacity 0.3s ease;
 }
 
-/* Only countries with the 'golden' class will glow */
 #svg1 path.golden:hover {
-    fill: url(#gold-gradient) !important; /* We will define this gradient in the next step */
-    opacity: 1;
-    cursor: default; /* As you requested: no pointer for mystery */
+    fill-opacity: 1;
+    
+    /* Üzerine gelince maskeyi sola çekiyoruz, böylece siyah (görünür) kısım sağa doğru kayıyor */
+    -webkit-mask-position: 0% 0;
+    mask-position: 0% 0;
 }
+
 
 #close-panel {
     background-color: #1a1a1a00;
