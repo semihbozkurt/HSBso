@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('load', () => {
     // 1. Elementleri seç
     const mapElement = document.getElementById('map-container');
 
