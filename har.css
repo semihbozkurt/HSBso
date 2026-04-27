@@ -16,6 +16,7 @@
     display: block;
     width: 1123px;      /* Use your exact Inkscape width */
     height: 794px;
+    transform-origin: 0 0;
     line-height: 0; /* Resimlerin altındaki 3-4 piksellik hayalet boşluğu siler */
 }
 
@@ -45,6 +46,9 @@
 }
 
 #svg1 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
     background: transparent !important;
     z-index: 3; /* Top layer (The one you click on) */
     pointer-events: none; /* Allows clicks to pass through the empty space of the SVG */
