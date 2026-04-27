@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Elementleri seç
-    const mapElement = document.getElementById('map-content');
+    const mapElement = document.getElementById('map-container');
 
     // 2. Kontrol Et: Element gerçekten var mı?
     if (!mapElement) {
-        console.error("HATA: 'map-content' ID'li element bulunamadı!");
+        console.error("HATA: 'map-container' ID'li element bulunamadı!");
         return;
     }
 
@@ -49,7 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     regions.forEach(region => {
         region.addEventListener('click', (e) => {
             console.log("Tıklandı:", region.id);
+
             panel.classList.add('open');
+
+            
+
             if (region.id==='kaplumada'){
                 inf.innerHTML= "<h3>Kaplumbağa Adası</h3> <p>Kaplumbağa adası aslında dünya üzerinde sürekli yüzen dev bir kaplumbağadır.</p>"};
             if (region.id==='Kraken'){
