@@ -203,8 +203,8 @@
             <nav class="nav-menu" id="nav-menu">
                 <a href="index.html">Ana Sayfa</a>
                 <a href="kumyeli_baskını.html">Kumyeli baskını</a>
-                <a href="ele-gem-hi.html" style="display: none;">Gemilerin hikayesi</a>
-                <div style="display: flex; justify-content: center; align-items: center;"><input type="text" id="innMenü" style="justify-items: center; height: 20px; width: 80px; color: green; padding: 2px; border-radius: 10px; border: 1px solid red; background: transparent;outline: none; margin-top: 20px;"></div>
+                <a href="ele-gem-hi.html" id="elegemhi" style="display: none;">Gemilerin hikayesi</a>
+                <div style="display: flex; justify-content: center; align-items: center;"><input type="text" id="innMenü" style="justify-items: center; height: 20px; width: 80px; color: green; padding: 2px; border-radius: 10px; border: 1px solid red; background: transparent;outline: none; margin-top: 20px;" value=""></div>
                 
             </nav>
         </header>
@@ -452,11 +452,19 @@
     
 
     <!-- Alt Yazı -->
-    <footer class="header-footer" style="position: relative;">Alt Yazı / İletişim 
+    <footer class="header-footer" style="position: relative;">Alt Yazı
         <a href="kom.html" style="height: 1px; width: 1px; position: absolute; top: -1px; right: 0px; cursor: default;"></a>
     </footer>
     </div>
 
+
+    <!--Men-şi-->
+    <script>
+       let alan = document.getElementById('innMenü')
+       let Egh = document.getElementById('elegemhi')
+
+       alan.addEventListener('keydown',function(event){if(event.key==='Enter'){if(alan.value.toLowerCase() == ('slenksten')){Egh.style.display='block'}}})
+    </script>
     <!--crousel lib-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!--crousel script-->
